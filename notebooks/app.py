@@ -21,3 +21,14 @@ if hist_button: # al hacer clic en el botón
      
          # mostrar un gráfico Plotly interactivo
     st.plotly_chart(fig, use_container_width=True)
+
+build_histogram = st.checkbox('Construir evolucion precio promedio por dia')
+
+if build_histogram: # si la casilla de verificación está seleccionada
+    st.write('evolucion precio promedio segun condicion del vehiculo')
+
+    df_agrupado= car_data.groupby(['date_posted','condition'])['price'] .mean().reset_index()
+
+    fig2= px.line(df_agrupado, x="date_posted", y="price", color='condition',
+    title= 'precio promedio de los vehiculos segun estado')
+    st.plotly_chart(fig2, use_container_width=True)
