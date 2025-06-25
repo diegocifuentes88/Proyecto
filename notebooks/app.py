@@ -1,8 +1,14 @@
+import os
+
+print("📍 Directorio actual (cwd):", os.getcwd())
+print("📁 Archivos en ese directorio:", os.listdir(os.getcwd()))
 import pandas as pd
 import plotly.express as px
 import streamlit as st
 
-car_data = pd.read_csv('vehicles_us.csv') # leer los datos
+st.header('analisis de ventas de vehiculos usados')
+
+car_data = pd.read_csv('../vehicles_us.csv') # leer los datos
 
 hist_button = st.button('Construir histograma') # crear un botón
      
